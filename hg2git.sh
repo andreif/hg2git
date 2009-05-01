@@ -7,6 +7,7 @@ SFX_MARKS="marks"
 SFX_HEADS="heads"
 SFX_STATE="state"
 QUIET=""
+GIT_PATH="/usr/lib/git-core/"
 
 USAGE="[--quiet] [-r <repo>] [-m <max>] [-s] [-A <file>]"
 LONG_USAGE="Import hg repository <repo> up to either tip or <max>
@@ -24,7 +25,9 @@ Options:
 	-r	Mercurial repository to import
 "
 
-. git-sh-setup
+PATH="${PATH}:${GIT_PATH}"
+
+. $GIT_PATH/git-sh-setup
 cd_to_toplevel
 
 while case "$#" in 0) break ;; esac
