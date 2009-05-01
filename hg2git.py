@@ -172,7 +172,7 @@ def export_file_contents(ctx,manifest,files):
   for file in files:
     fctx=ctx.filectx(file)
     d=fctx.data()
-    wr('M %s inline %s' % (gitmode(manifest.execf(file)),file))
+    wr('M %s inline %s' % (gitmode('x' in manifest.flags(file)),file))
     wr('data %d' % len(d)) # had some trouble with size()
     wr(d)
     count+=1
